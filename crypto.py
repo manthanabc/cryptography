@@ -1,6 +1,6 @@
 import math	
 import pyperclip
-
+import mathModule as m
 '''
 gcd=greatest comon divisor (a%b)=1
 modInvers= inverse mod ((A*i)%len)==1
@@ -12,19 +12,6 @@ multiplicative//multiplicativeCrypt//
 and demultipicaive //decryptMultiplicative//
 '''
 
-
-
-def gcd(a,b):
-	while a!=0:
-		a,b=b%a,a
-	return b
-
-def modInverse(a, m) : 
-    a = a % m; 
-    for x in range(1, m) : 
-        if ((a * x) % m == 1) : 
-            return x 
-    return 1
 
 def caesarShift(plain,key):
 	
@@ -107,7 +94,7 @@ def decryptMultiplicative(plain,nkey):
 
 	SET='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijlmnopqrstuvwxyz1234567890.,?! '
 	out=''
-	key=modInverse(nkey,len(SET))
+	key=m.modInverse(nkey,len(SET))
 	for i in plain:
 
 		current_index=SET.find(i)*key
@@ -222,7 +209,7 @@ def main():
 
 	print("VALID KEYS_-_-")
 	for i in range(len(SET)):
-		if gcd(i,len(SET))==1:
+		if m.gcd(i,len(SET))==1:
 			print(i)
 	key=int(input("key-"))
 	crypted=multiplicativeCrypt(plain,int(key))

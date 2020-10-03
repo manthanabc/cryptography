@@ -1,5 +1,5 @@
 def load_words():
-    with open('words_alpha.txt') as word_file:
+    with open('words.txt') as word_file:
         valid_words = (word_file.read().split())
         #valid_words=file.read()
         words={}
