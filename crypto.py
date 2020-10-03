@@ -1,13 +1,30 @@
 import math	
 import pyperclip
 
+'''
+gcd=greatest comon divisor (a%b)=1
+modInvers= inverse mod ((A*i)%len)==1
+caesarshift//caesarShift//= a=>b b=>c
+deceasar//decaesarCrypto// =  b=>a  c=>a
+transppose//rows//
+detreanpose
+multiplicative//multiplicativeCrypt//
+and demultipicaive //decryptMultiplicative//
+'''
+
+
 
 def gcd(a,b):
 	while a!=0:
 		a,b=b%a,a
 	return b
 
-
+def modInverse(a, m) : 
+    a = a % m; 
+    for x in range(1, m) : 
+        if ((a * x) % m == 1) : 
+            return x 
+    return 1
 
 def caesarShift(plain,key):
 	
@@ -77,10 +94,26 @@ def multiplicativeCrypt(plain,key):
 	SET='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijlmnopqrstuvwxyz1234567890.,?! '
 	out=''
 	for i in plain:
+
 		current_index=SET.find(i)*key
 		#print (current_index)
-		print(i,"moddedd is === ",current_index%len(SET),'  asfsklg s ',current_index)
-		out=out + (SET[current_index if current_index < len(SET) else (current_index % len(SET))])
+		print(i,"moddedd is === ",current_index%len(SET),'  -orignal - is == ',current_index)
+		out=out + SET[current_index%len(SET)]
+	print(out)
+	return out
+
+
+def decryptMultiplicative(plain,nkey):
+
+	SET='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijlmnopqrstuvwxyz1234567890.,?! '
+	out=''
+	key=modInverse(nkey,len(SET))
+	for i in plain:
+
+		current_index=SET.find(i)*key
+		#print (current_index)
+		print(i,"moddedd is === ",current_index%len(SET),'  -orignal - is == ',current_index)
+		out=out + SET[current_index%len(SET)]
 	print(out)
 	return out
 
@@ -192,7 +225,10 @@ def main():
 		if gcd(i,len(SET))==1:
 			print(i)
 	key=int(input("key-"))
-	print(multiplicativeCrypt(plain,int(key)))
+	crypted=multiplicativeCrypt(plain,int(key))
+	print(crypted)
+	pyperclip.copy(crypted)
+	print(decryptMultiplicative(crypted,key))
 
 if __name__ == '__main__' :
 	main()
