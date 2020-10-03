@@ -9,7 +9,7 @@ def load_words():
     return words
 
 def isEnglish(wordc,dic):
-	print('checking for  -'+wordc)
+	#print('checking for  -'+wordc)
 	if wordc.lower().strip() in dic:
 		return True
 
@@ -21,9 +21,9 @@ def removechar(i):
 	out=i
 	numbersandsymbol='''10!@#$%23456789^&*():"{<?>][]}{//.,?><'''
 	for symbol in numbersandsymbol:
-		print('now checking for   -'+symbol)
+		#print('now checking for   -'+symbol)
 		if symbol in out:
-			print ('replacing '+symbol)
+			#print ('replacing '+symbol)
 			out=out.replace(symbol,'')
 	return out 
 
@@ -46,7 +46,7 @@ def english(sentence,dic,min_word_percent=85,min_char_percent=60):
 
 	ratioofwords=noofeng/total
 	ratioofchar=noofvalid/totalchar
-	print(f'word percent is {ratioofwords} and char percent is {ratioofchar}')
+	#print(f'word percent is {ratioofwords} and char percent is {ratioofchar}')
 	if ratioofwords > min_word_percent/100 and ratioofchar>min_char_percent/100:
 		return True
 	else:

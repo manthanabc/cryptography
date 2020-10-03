@@ -6,9 +6,9 @@ SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
 
 def main():
 	
-	myMessage="""UUUUUll"""
+	myMessage="""this is the top secrate nuclear codes from world war 3"""
 	myKey=getRandomKey()
-	mymode='decrypt'
+	mymode='encrypt'
 
 	if mymode == 'encrypt':
 		translated=encryptMessage(myKey,myMessage)
